@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.packtpub.workoutscheduler.MainActivity">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_NewRoutine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New  Routine"
+            tools:text="New Routine" />
+
+        <Button
+            android:id="@+id/button_NewExercise "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Exercise "
+            tools:text="New Exercise " />
+
+        <Button
+            android:id="@+id/button_LogWorkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Workout"
+            tools:text="Log Workout" />
+
+        <Button
+            android:id="@+id/button_liftNumbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lift Numbers"
+            tools:text="LIFT NUMBERS" />
+
+        <Button
+            android:id="@+id/button_MyRoutine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Routine"
+            tools:text="My Routine" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
