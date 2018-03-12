@@ -1,6 +1,7 @@
 package com.packtpub.workoutscheduler;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,11 +27,22 @@ public class newRoutine extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.menu_insert:
+            case R.id.menu_exercise:
                 newExercise();
+                return true;
+            case R.id.menu_existingexercise:
+                existingExercise();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void newExercise() {
+
+    }
+
+    public void existingExercise(){
+
     }
 }
