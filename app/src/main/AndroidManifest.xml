@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".newRoutine" />
+        <activity android:name=".newRoutine"/>
         <activity android:name=".myRoutine" />
         <activity android:name=".newExercise" />
         <activity android:name=".logWorkout" />
