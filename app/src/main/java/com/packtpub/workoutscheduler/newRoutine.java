@@ -28,7 +28,7 @@ import static com.packtpub.workoutscheduler.newRoutine.Exercise.TYPE_HEADER;
 public class newRoutine extends AppCompatActivity {
 
     private ListView exerciseListView;
-    private ListAdapter exerciseAdapter = null;
+    private MyListAdapter exerciseAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
