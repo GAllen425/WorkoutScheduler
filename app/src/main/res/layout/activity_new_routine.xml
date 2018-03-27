@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/editText2"
+            android:id="@+id/textView_RoutineName"
             android:layout_width="137dp"
             android:layout_height="43dp"
             android:layout_marginBottom="8dp"
@@ -36,7 +36,7 @@
             tools:text="Routine Name :" />
 
         <EditText
-            android:id="@+id/textView2"
+            android:id="@+id/editText_RoutineName"
             android:layout_width="188dp"
             android:layout_height="43dp"
             android:layout_marginBottom="8dp"
@@ -48,7 +48,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editText2"
+            app:layout_constraintStart_toEndOf="@+id/textView_RoutineName"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>

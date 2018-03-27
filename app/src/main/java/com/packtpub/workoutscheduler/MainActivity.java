@@ -38,10 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this,newRoutine.class);
                 startActivity(i);
                 break;
-            case R.id.button_NewExercise:
-                i = new Intent(this,newExercise.class);
-                startActivity(i);
-                break;
             case R.id.button_LogWorkout:
                 i = new Intent(this,logWorkout.class);
                 startActivity(i);

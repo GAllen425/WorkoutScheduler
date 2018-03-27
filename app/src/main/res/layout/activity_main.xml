@@ -20,18 +20,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button_NewRoutine"
+            android:id="@+id/button_MyRoutine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New  Routine"
-            tools:text="New Routine" />
-
-        <Button
-            android:id="@+id/button_NewExercise "
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Exercise "
-            tools:text="New Exercise " />
+            android:text="My Routine"
+            tools:text="My Routine" />
 
         <Button
             android:id="@+id/button_LogWorkout"
@@ -48,11 +41,11 @@
             tools:text="LIFT NUMBERS" />
 
         <Button
-            android:id="@+id/button_MyRoutine"
+            android:id="@+id/button_NewRoutine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My Routine"
-            tools:text="My Routine" />
+            android:text="New  Routine"
+            tools:text="New Routine" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

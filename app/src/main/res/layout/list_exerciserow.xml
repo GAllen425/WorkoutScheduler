@@ -7,22 +7,40 @@
     android:backgroundTint="@android:color/transparent">
 
     <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Weight"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextExercise"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/editTextRatio"
-        android:layout_width="102dp"
+        android:layout_width="75dp"
         android:layout_height="46dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
         android:ems="10"
         android:inputType="text|textPersonName"
         android:text="Day Ratio"
         android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextReps"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@android:color/transparent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextReps"
@@ -31,14 +49,15 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
         android:ems="10"
         android:inputType="textPersonName|number"
         android:text="Reps"
         android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextSets"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@android:color/transparent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextSets"
@@ -47,29 +66,31 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
         android:ems="10"
         android:inputType="textPersonName|number"
         android:text="Sets"
         android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextExercise"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@android:color/transparent"/>
+        app:layout_constraintStart_toEndOf="@+id/editTextWeight"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextExercise"
-        android:layout_width="133dp"
+        android:layout_width="97dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Exercise"
         android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@android:color/transparent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
