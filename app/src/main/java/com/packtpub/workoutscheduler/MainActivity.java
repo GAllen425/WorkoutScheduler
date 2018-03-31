@@ -16,9 +16,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button_NewRoutine = (Button) findViewById(R.id.button_NewRoutine);
         button_NewRoutine.setOnClickListener(this);
 
-        Button button_NewExercise = (Button) findViewById(R.id.button_NewExercise);
-        button_NewExercise.setOnClickListener(this);
-
         Button button_LogActivity = (Button) findViewById(R.id.button_LogWorkout);
         button_LogActivity.setOnClickListener(this);
 

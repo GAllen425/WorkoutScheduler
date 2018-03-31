@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -33,6 +34,7 @@ import static java.lang.Integer.valueOf;
 
 public class newRoutine extends AppCompatActivity {
 
+    SharedPreference sharedPreference = new SharedPreference();
     public static final String ROUTINE_NAME_SHARED_PREFERENCES = "Routine_names";
 
     private ListView exerciseListView;
@@ -60,6 +62,9 @@ public class newRoutine extends AppCompatActivity {
         return true;
     }
 
+    // <TODO> now it saves the list of routine names in shared preferences but doesnt save its data,
+    // look into data management for each routine
+    // <TODO> check routine list so same routine list name isnt added twice.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -68,35 +73,23 @@ public class newRoutine extends AppCompatActivity {
                 newExercise();
                 return true;
             case R.id.menu_save:
-                saveRoutine();
+                saveButton();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    // TODO adding a new row resets previous rows
-    // TODO saving only saves exercuse name
-    public void saveRoutine(){
-        Context context = this;
-        EditText routineName = (EditText)findViewById(R.id.editText_RoutineName);
-        SharedPreferences sharedPreferences = context.getSharedPreferences(
-            routineName.getText().toString(), Context.MODE_PRIVATE );
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(exerciseAdapter.myItems);
-        System.out.println(json);
-        editor.putString(routineName.getText().toString(),json);
-        editor.commit();
-
-        //get list, add new routine name, set routine list
-        // this still doesnt work, think if app gets killed you lose list
-
-        List<String> routineNameList = null;
-        GlobalState routineNames = (GlobalState) getApplication();
-        routineNameList = routineNames.getTest();
-        routineNameList.add(routineName.getText().toString());
-        routineNames.setTest(routineNameList);
+    public void saveButton(){
+        String routineString = ((EditText)findViewById(R.id.editText_RoutineName)).getText().toString();
+        ArrayList<String> routineList = sharedPreference.getRoutines(getApplicationContext());
+        if(routineList.contains(routineString)) {
+            Toast.makeText(getApplicationContext(),"Routine name already exists!", Toast.LENGTH_LONG).show();
+        } else {
+            sharedPreference.addRoutine(getApplicationContext(), routineString);
+            Toast.makeText(getApplicationContext(), "Routine saved!", Toast.LENGTH_LONG).show();
+        }
+        Log.d("routine list", sharedPreference.getRoutines(getApplicationContext()).toString());
     }
 
     public void newExercise(){
