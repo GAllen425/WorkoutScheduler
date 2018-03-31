@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Gareth on 27/03/2018.
- */
 
 public class SharedPreference {
     public static final String PREFS_NAME = "ROUTINE_APP";

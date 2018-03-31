@@ -1,8 +1,10 @@
 package com.packtpub.workoutscheduler;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +27,9 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -63,8 +67,6 @@ public class newRoutine extends AppCompatActivity {
     }
 
     // <TODO> now it saves the list of routine names in shared preferences but doesnt save its data,
-    // look into data management for each routine
-    // <TODO> check routine list so same routine list name isnt added twice.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -83,13 +85,43 @@ public class newRoutine extends AppCompatActivity {
     public void saveButton(){
         String routineString = ((EditText)findViewById(R.id.editText_RoutineName)).getText().toString();
         ArrayList<String> routineList = sharedPreference.getRoutines(getApplicationContext());
-        if(routineList.contains(routineString)) {
+        if(routineList != null && routineList.contains(routineString)) {
             Toast.makeText(getApplicationContext(),"Routine name already exists!", Toast.LENGTH_LONG).show();
         } else {
             sharedPreference.addRoutine(getApplicationContext(), routineString);
             Toast.makeText(getApplicationContext(), "Routine saved!", Toast.LENGTH_LONG).show();
         }
-        Log.d("routine list", sharedPreference.getRoutines(getApplicationContext()).toString());
+        Log.d("routine list",  sharedPreference.getRoutines(getApplicationContext()).toString());
+
+        SQLiteDatabase database = new SQLiteDBHelper(this).getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String dateString = DateFormat.getDateTimeInstance().format(new Date());
+
+        // <TODO> loop over exercise rows
+        for (int i=0; i< exerciseAdapter.myItems.size(); i++) {
+            values.put(SQLiteDBHelper.ROUTINE_COLUMN_NAME, routineString);
+            values.put(SQLiteDBHelper.ROUTINE_COLUMN_DATE, dateString);
+
+            Exercise exercise = exerciseAdapter.myItems.get(i);
+            String exerciseString = exercise.getName();
+            String weightString = "" + exercise.getWeight();
+            String setsString = "" + exercise.getSets();
+            String repsString = "" + exercise.getReps();
+            String ratioString = "" + exercise.getRatio();
+
+            values.put(SQLiteDBHelper.EXERCISE_COLUMN_NAME, exerciseString);
+            values.put(SQLiteDBHelper.EXERCISE_COLUMN_WEIGHT, weightString);
+            values.put(SQLiteDBHelper.EXERCISE_COLUMN_SETS, setsString);
+            values.put(SQLiteDBHelper.EXERCISE_COLUMN_REPS, repsString);
+            values.put(SQLiteDBHelper.EXERCISE_COLUMN_RATIO, ratioString);
+
+            long newRowId = database.insert(SQLiteDBHelper.ROUTINE_TABLE_NAME, null, values);
+        }
+
+
+        //Toast.makeText(this, "The new Row Id is " + newRowId, Toast.LENGTH_LONG).show();
+
     }
 
     public void newExercise(){
