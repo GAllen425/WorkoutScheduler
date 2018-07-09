@@ -55,7 +55,7 @@ public class newRoutine extends AppCompatActivity {
         View header = (View)getLayoutInflater().inflate(R.layout.list_headerexerciserow, null);
         exerciseListView.addHeaderView(header,null,false);
 
-        exerciseAdapter = new MyListAdapter();
+        exerciseAdapter = new MyListAdapter(this);
         exerciseListView.setAdapter(exerciseAdapter);
     }
 
@@ -104,7 +104,8 @@ public class newRoutine extends AppCompatActivity {
             values.put(SQLiteDBHelper.ROUTINE_COLUMN_DATE, dateString);
 
             Exercise exercise = exerciseAdapter.myItems.get(i);
-            String exerciseString = exercise.getName();
+            String exerciseString = "" + exercise.getName();
+            Log.d ("exerciseString", exerciseString);
             String weightString = "" + exercise.getWeight();
             String setsString = "" + exercise.getSets();
             String repsString = "" + exercise.getReps();
@@ -118,157 +119,11 @@ public class newRoutine extends AppCompatActivity {
 
             long newRowId = database.insert(SQLiteDBHelper.ROUTINE_TABLE_NAME, null, values);
         }
-
-
         //Toast.makeText(this, "The new Row Id is " + newRowId, Toast.LENGTH_LONG).show();
-
     }
 
     public void newExercise(){
         exerciseAdapter.myItems.add(new Exercise("Exercise " + (exerciseAdapter.myItems.size()+1),0, 0,0,"0:0"));
         exerciseListView.setAdapter(exerciseAdapter);
     }
-
-
-    public class Exercise {
-        private int sets;
-        private int reps;
-        private String name;
-        private String ratio;
-        private int weight;
-
-        public Exercise(String name, int sets, int reps, int weight, String ratio){
-            this.name = name;
-            this.sets = sets;
-            this.reps = reps;
-            this.weight = weight;
-            this.ratio = ratio;
-        }
-
-        public int getSets(){ return sets; }
-        public int getReps() { return reps; }
-        public String getName() { return name; }
-        public String getRatio() { return ratio; }
-        public int getWeight() { return weight; }
-    }
-
-    public class MyListAdapter extends BaseAdapter {
-        private LayoutInflater mInflater;
-        public ArrayList<Exercise> myItems = new ArrayList<Exercise>();
-
-        public MyListAdapter() {
-            mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            Exercise exercise = new Exercise
-                ( "Exercise " + 1, 0,0,0, "0:0");
-            myItems.add(exercise);
-            notifyDataSetChanged();
-        }
-
-        public int getCount(){
-            return myItems.size();
-        }
-
-        public Object getItem (int position) {
-            return position;
-        }
-
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView (int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
-            if(convertView == null)
-            {
-                holder = new ViewHolder();
-                convertView = mInflater.inflate(R.layout.list_exerciserow,null);
-                holder.name = (EditText) convertView.findViewById(R.id.editTextExercise);
-                holder.sets = (EditText) convertView.findViewById(R.id.editTextSets);
-                holder.reps = (EditText) convertView.findViewById(R.id.editTextReps);
-                holder.ratio = (EditText) convertView.findViewById(R.id.editTextRatio);
-                holder.weight = (EditText) convertView.findViewById(R.id.editTextWeight);
-
-                convertView.setTag(holder);
-            } else
-                {
-                holder = (ViewHolder) convertView.getTag();
-            }
-
-            holder.name.setText(myItems.get(position).name);
-            holder.ratio.setText(myItems.get(position).ratio);
-            holder.sets.setText("" + myItems.get(position).sets);
-            holder.reps.setText("" + myItems.get(position).reps);
-            holder.weight.setText("" + myItems.get(position).weight);
-            holder.name.setId(position);
-            holder.weight.setId(position);
-            holder.ratio.setId(position);
-            holder.sets.setId(position);
-            holder.reps.setId(position);
-
-            holder.name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean hasFocus) {
-                    if(!hasFocus){
-                        final int position = view.getId();
-                        final EditText Name = (EditText) view;
-                        myItems.get(position).name = Name.getText().toString();
-                    }
-                }
-            });
-            holder.ratio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean hasFocus) {
-                    if(!hasFocus){
-                        final int position = view.getId();
-                        final EditText Ratio = (EditText) view;
-                        myItems.get(position).ratio = Ratio.getText().toString();
-                    }
-                }
-            });
-            holder.weight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean hasFocus) {
-                    if(!hasFocus){
-                        final int position = view.getId();
-                        final EditText Weight = (EditText) view;
-                        myItems.get(position).weight = valueOf(Weight.getText().toString());
-                    }
-                }
-            });
-            holder.sets.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean hasFocus) {
-                    if(!hasFocus){
-                        final int position = view.getId();
-                        final EditText Sets = (EditText) view;
-                        myItems.get(position).sets = valueOf(Sets.getText().toString());
-                    }
-                }
-            });
-            holder.reps.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean hasFocus) {
-                    if(!hasFocus){
-                        final int position = view.getId();
-                        final EditText Reps = (EditText) view;
-                        myItems.get(position).reps = valueOf(Reps.getText().toString());
-                    }
-                }
-            });
-
-            return convertView;
-        }
-
-        class ViewHolder {
-            EditText name;
-            EditText sets;
-            EditText reps;
-            EditText weight;
-            EditText ratio;
-        }
-
-    }
-
-
 }

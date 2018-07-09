@@ -47,5 +47,12 @@
             android:text="New  Routine"
             tools:text="New Routine" />
 
+        <Button
+            android:id="@+id/button_Settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            tools:text="Settings" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

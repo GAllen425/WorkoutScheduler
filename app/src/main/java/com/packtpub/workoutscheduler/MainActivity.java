@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button button_MyRoutine = (Button) findViewById(R.id.button_MyRoutine);
         button_MyRoutine.setOnClickListener(this);
+
+        Button button_Settings = (Button) findViewById(R.id.button_Settings);
+        button_Settings.setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_MyRoutine:
                 i = new Intent(this,myRoutine.class);
+                startActivity(i);
+                break;
+            case R.id.button_Settings:
+                i = new Intent(this, Settings.class);
                 startActivity(i);
                 break;
         }

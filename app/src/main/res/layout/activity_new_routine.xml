@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView_RoutineName"
+            android:id="@+id/textView_ExerciseName"
             android:layout_width="137dp"
             android:layout_height="43dp"
             android:layout_marginBottom="8dp"
@@ -48,7 +48,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView_RoutineName"
+            app:layout_constraintStart_toEndOf="@+id/textView_ExerciseName"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>

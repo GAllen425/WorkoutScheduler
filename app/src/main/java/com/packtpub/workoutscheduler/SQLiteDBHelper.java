@@ -21,8 +21,6 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
     public static final String EXERCISE_COLUMN_REPS = "reps";
     public static final String EXERCISE_COLUMN_RATIO = "ratio";
 
-    public static final String PERSON_COLUMN_GENDER = "gender";
-
     public SQLiteDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -32,12 +30,12 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE " + ROUTINE_TABLE_NAME + " (" +
                 ROUTINE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 ROUTINE_COLUMN_NAME + " TEXT ," +
-                ROUTINE_COLUMN_DATE + " DATE, " +
-                ROUTINE_COLUMN_DAY + " INT, " +
-                EXERCISE_COLUMN_NAME + "TEXT, " +
+                ROUTINE_COLUMN_DATE + " DATE , " +
+                ROUTINE_COLUMN_DAY + " INT , " +
+                EXERCISE_COLUMN_NAME + " TEXT , " +
                 EXERCISE_COLUMN_WEIGHT + " DECIMAL(5,2) , " +
                 EXERCISE_COLUMN_SETS + " INT , " +
-                EXERCISE_COLUMN_REPS + " INT, " +
+                EXERCISE_COLUMN_REPS + " INT , " +
                 EXERCISE_COLUMN_RATIO + " TEXT " + ")");
     }
 

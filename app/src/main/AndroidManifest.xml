@@ -3,7 +3,7 @@
     package="com.packtpub.workoutscheduler">
 
     <application
-        android:name="com.packtpub.workoutscheduler.GlobalState"
+        android:name=".GlobalState"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,10 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".newRoutine"/>
+        <activity android:name=".newRoutine" />
         <activity android:name=".myRoutine" />
         <activity android:name=".logWorkout" />
-        <activity android:name=".liftNumbers"></activity>
+        <activity android:name=".liftNumbers" />
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
